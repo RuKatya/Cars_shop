@@ -1,0 +1,28 @@
+<head>
+    <%- include('./components/head'); %>
+</head>
+
+<body>
+    <%- include('./components/navbar') %>
+        <div class="container">
+            CARS!
+            <% cars.forEach(function(car){ %>
+                <div class="card" style="width: 18rem;">
+                    <img src=" <%- car.img %>" class="card-img-top" alt=" <%- car.title %>">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%- car.title %>
+                        </h5>
+                        <h5 class="price">
+                            <%- car.price %>
+                        </h5>
+                        <a href="/cars/<%- car.id %>" class="btn btn-primary">Show car</a>
+                        <a href="/cars/<%- car.id %>/edit?allow=true" class="btn btn-primary">Edit course</a>
+                    </div>
+                </div>
+                <% }); %>
+
+
+        </div>
+        <%- include('./components/footer'); %>
+</body>

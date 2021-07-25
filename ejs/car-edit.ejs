@@ -1,0 +1,45 @@
+<head>
+    <%- include('./components/head'); %>
+</head>
+
+<body>
+    <%- include('./components/navbar') %>
+        <div class="container">
+            <h1>Редактировать <%- car.title %>
+            </h1>
+
+            <form action="/cars/edit" method="POST">
+                <div class="input-field">
+                    <input id="title" name="title" type="text" class="validate" required value="<%- car.title %>" />
+                    <label for="title">Car name</label>
+                    <span class="helper-text" data-error="Enter car name"></span>
+
+                </div>
+
+                <div class="input-field">
+                    <input id="price" name="price" type="number" class="validate" required min="1"
+                        value="<%- car.price %>" />
+                    <label for="title">Price of car</label>
+                    <span class="helper-text" data-error="Enter price"></span>
+                </div>
+
+                <div class="input-field">
+                    <input id="img" name="img" type="text" class="validate" required value="<%- car.img %>" />
+                    <label for="img">URL picture of car</label>
+                    <span class="helper-text" data-error="enter the URL of the image"></span>
+                </div>
+
+                <input type="hidden" name="id" value="<%- car.id %>">
+
+                <button type="submit" class="btn btn-primary">Edit Car</button>
+            </form>
+
+            <form action="/cars/remove" method="POST">
+                <input type="hidden" name="id" value="<%- car.id %>">
+                <button class="btn red">Delete car</button>
+            </form>
+
+
+        </div>
+        <%- include('./components/footer'); %>
+</body>
