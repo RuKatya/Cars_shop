@@ -17,7 +17,7 @@ const UsersSchema = new Schema({
                     require: true,
                     default: 1
                 },
-                courseId: {
+                carId: {
                     type: Schema.Types.ObjectId,
                     ref: 'Cars',
                     require: true
@@ -26,5 +26,25 @@ const UsersSchema = new Schema({
         ]
     }
 })
+
+UsersSchema.methods.addToCart = function (car) {
+    const clonedItems = [...this.cart.items]
+    const idx = clonedItems.findIndex(c => {
+        return c.courseId.toString() === car._id.toString()
+    })
+
+    if (idx >= 0) {
+        clonedItems[idx].count = this.cart.items[idx].count + 1
+    } else {
+        clonedItems.push({
+            carId: cars._id,
+            count: 1
+        })
+    }
+
+    const newCart = { items: clonedItems }
+
+    this.cart = newCart
+}
 
 module.exports = model('Users', UsersSchema)

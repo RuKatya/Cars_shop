@@ -4,8 +4,8 @@ const router = Router();
 
 router.get('/', async (req, res) => {
     const cars = await Cars.find() //getAll cars
-        .populate('userId') //show information about user
-        .select('title') //show only fields that we want
+    // .populate('userId', 'email name') //show information about user, in second req we can get the fields that we want from users
+    // .select('title') //show only fields that we want
 
     console.log(cars)
 
