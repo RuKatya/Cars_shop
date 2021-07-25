@@ -44,7 +44,7 @@ UsersSchema.methods.addToCart = function (car) {
 
     const newCart = { items: clonedItems }
 
-    this.cart = newCart
+    this.cart = newCart;
 }
 
 module.exports = model('Users', UsersSchema)
