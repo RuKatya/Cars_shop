@@ -16,4 +16,13 @@ const CarsSell = new Schema({
     }
 })
 
+CarsSell.method('toClient', function () {
+    const car = this.toObject()
+
+    car.id = car._id
+    delete car._id
+
+    return car
+})
+
 module.exports = model('Cars', CarsSell)

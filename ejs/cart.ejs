@@ -4,10 +4,75 @@
 
 <body>
     <%- include('./components/navbar') %>
-        <div class="container">
-            HI
+        <div class="container" id="cart">
+            <% if (cars.length) { %>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="row row-cols-5">
+                            <span class="col-7">
+                                <strong>
+                                    Total:
+                                </strong>
+                            </span>
+                            <span class="col-2 price" style="color: rgb(7, 32, 255); font-weight: bold;">
+                                <%- price%>
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="row row-cols-5">
+                            <span class="col">
+                                Car
+                            </span>
+                            <span class="col">
+                                Count
+                            </span>
+                            <span class="col">
+                                Price
+                            </span>
+                            <span>
+                                Cost
+                            </span>
+                        </span>
+                    </li>
+                </ul>
+                <ul class="list-group liCart">
+                    <% cars.forEach(function(car){ %>
 
+                        <li class="list-group-item">
+                            <span class="row row-cols-5">
+                                <span class="col">
+                                    <%- car.title %>
+                                </span>
+                                <span class="col">
+                                    <%- car.count %>
+                                </span>
+                                <span class="col price">
+                                    <%- car.price%>
+                                </span>
+                                <span class="col price">
+                                    <%-car.price*car.count%>
+                                </span>
+
+                                <span class="col">
+                                    <button class="btn btn-primary js-remove" data-id="<%-car._id%>">
+                                        Delete
+                                    </button>
+                                </span>
+                            </span>
+                        </li>
+
+                        <% }); %>
+                </ul>
+
+
+                <% } else { %>
+                    <div>The cart is empty</div>
+                    <% } %>
         </div>
+
         <%- include('./components/footer'); %>
 
 </body>
