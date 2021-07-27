@@ -28,23 +28,26 @@ const UsersSchema = new Schema({
 })
 
 UsersSchema.methods.addToCart = function (car) {
-    const clonedItems = [...this.cart.items]
-    const idx = clonedItems.findIndex(c => {
-        return c.courseId.toString() === car._id.toString()
+    const items = [...this.cart.items]
+    const idx = items.findIndex(c => {
+        return c.carId.toString() === car._id.toString() //to compare same type
     })
 
     if (idx >= 0) {
-        clonedItems[idx].count = this.cart.items[idx].count + 1
+        items[idx].count = items[idx].count + 1
     } else {
-        clonedItems.push({
-            carId: cars._id,
+        items.push({
+            carId: car._id,
             count: 1
         })
     }
 
-    const newCart = { items: clonedItems }
+    // const newCart = { items: items }
+    // this.cart = newCart;
 
-    this.cart = newCart;
+    this.cart = { items }
+
+    return this.save();
 }
 
 module.exports = model('Users', UsersSchema)

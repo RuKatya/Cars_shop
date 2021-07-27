@@ -70,11 +70,12 @@ async function start() {
 const indexRoute = require('./route/index');
 const carsRoute = require('./route/cars')
 const addRoute = require('./route/addcar')
+const cartRoute = require('./route/cart')
 
 app.use('/', indexRoute)
 app.use('/cars', carsRoute)
 app.use('/addcar', addRoute)
-
+app.use('/cart', cartRoute)
 //LISTENING
 try {
     app.listen(PORT, () => {
