@@ -1,30 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+    <!-- <link href="style/style.css"> -->
     <%- include('../components/head'); %>
 </head>
 
 <body>
-    <%- include('../components/navbar') %>
+    <%- include('../components/navbar')%>
         <div class="container">
             <ul class="nav nav-tabs justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#login">Login</a>
+                    <a class="nav-link active btnLogin" aria-current="page" onclick="hendleShowLogin(event)">Login</a>
+
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="#register">Registration</a>
+                    <a class="nav-link btnRegist" onclick="hendleShowRegist(event)">Registration</a>
                 </li>
             </ul>
 
             <!-- Login -->
             <div id="login">
-                LOGIN
+                <h2>Login</h2>
+                <div>
+                    <div class="mb-3">
+                        <input type="email" id="email" name="email" class="form-control" required
+                            placeholder="Enter Email address">
+                        <span data-error-message="Enter Email address"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="password" id="password" name="password" class="form-control" required
+                            placeholder="Enter password">
+                    </div>
+                </div>
             </div>
 
             <!-- Registration -->
-            <div id="register">
-                REG
+            <div id="register" style="display: none;">
+                <h2>Create new account</h2>
+                <div>
+                    <div class="mb-3">
+                        <input type="email" id="email" name="email" class="form-control" required
+                            placeholder="Enter Email address">
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-text">Full name</span>
+                        <input type="text" class="form-control" placeholder="First name" required>
+                        <input type="text" a class="form-control" placeholder="Last name" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="password" id="repassword" name="password" class="form-control" required
+                            placeholder="Enter password">
+                    </div>
+
+                </div>
             </div>
 
         </div>
 
-        <%- include('../components/footer'); %>
+        <script src="/app.js"></script>
 </body>

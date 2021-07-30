@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <%- include('./components/head'); %>
 </head>
@@ -7,7 +10,7 @@
         <div class="container">
             CARS!
             <% if (cars.length) { %>
-                <div class="row row-cols-3">
+                <div class="row row-cols-3 gap-0">
                     <% cars.forEach(function(car){ %>
                         <div class="col">
                             <div class="card" style="width: 18rem;">
@@ -19,13 +22,14 @@
                                     <h5 class="price">
                                         <%- car.price %>
                                     </h5>
-                                    <a href="/cars/<%- car.id %>" class="btn btn-primary">Show car</a>
-                                    <a href="/cars/<%- car.id %>/edit?allow=true" class="btn btn-primary">Edit
-                                        course</a>
-                                    <form action="/cart/add" method="POST">
-                                        <input type="hidden" name="id" value="<%- car.id %>">
-                                        <button type="submit" class="btn btn-primary">Купить</button>
-                                    </form>
+                                    <div class="btnsCars">
+                                        <a href="/cars/<%- car.id %>" class="btn btn-primary">Show car</a>
+                                        <a href="/cars/<%- car.id %>/edit?allow=true" class="btn btn-primary">Edit</a>
+                                        <form action="/cart/add" method="POST">
+                                            <input type="hidden" name="id" value="<%- car.id %>">
+                                            <button type="submit" class="btn btn-success">Buy</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>

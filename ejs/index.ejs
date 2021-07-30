@@ -2,18 +2,52 @@
 <html lang="en">
 
 <head>
-
-
     <%- include('./components/head'); %>
-
 </head>
 
 <body>
     <%- include('./components/navbar') %>
-        <div class="container">
 
-            <h1>Hello CARS!!</h1>
+
+
+        <div class="carsSlider">
+            <% cars.slice(0, 5).forEach(car=> { %>
+                <div class="slide" style="background-image: url('<%- car.img%>');">
+                    <a href="/cars/<%- car.id %>">
+                        <%- car.title%>
+                    </a>
+                </div>
+                <% }) %>
         </div>
+
+        <div class="container">
+            <div>
+                <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis facere minus dolore! Fuga maxime
+                    voluptas provident voluptatum corporis facilis culpa qui autem expedita totam, esse excepturi
+                    quibusdam,
+                    fugit repellendus aut!</h2>
+            </div>
+            <div>
+                <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis facere minus dolore! Fuga maxime
+                    voluptas provident voluptatum corporis facilis culpa qui autem expedita totam, esse excepturi
+                    quibusdam,
+                    fugit repellendus aut!</h2>
+            </div>
+            <div>
+                <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis facere minus dolore! Fuga maxime
+                    voluptas provident voluptatum corporis facilis culpa qui autem expedita totam, esse excepturi
+                    quibusdam,
+                    fugit repellendus aut!</h2>
+            </div>
+            <div>
+                <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis facere minus dolore! Fuga maxime
+                    voluptas provident voluptatum corporis facilis culpa qui autem expedita totam, esse excepturi
+                    quibusdam,
+                    fugit repellendus aut!</h2>
+            </div>
+        </div>
+
+
 
         <%- include('./components/footer'); %>
 </body>

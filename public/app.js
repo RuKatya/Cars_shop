@@ -6,9 +6,7 @@ const toCurrency = price => {
     }).format(price)
 }
 
-document.querySelectorAll('.price').forEach(node => {
-    node.textContent = toCurrency(node.textContent)
-})
+
 
 //Date
 const toDate = date => {
@@ -22,10 +20,22 @@ const toDate = date => {
     }).format(new Date(date))
 }
 
+document.querySelectorAll('.price').forEach(node => {
+    node.textContent = toCurrency(node.textContent)
+})
+
 document.querySelectorAll('.date').forEach(node => {
     node.textContent = toDate(node.textContent)
 })
 
+const login = document.querySelector('#login');
+const regist = document.querySelector('#register');
+const btnLogin = document.querySelector('.btnLogin');
+const btnRegist = document.querySelector('.btnRegist');
+
+const slides = document.querySelectorAll('.slide')
+
+//Cart
 const $cart = document.querySelector('#cart')
 if ($cart) {
     $cart.addEventListener('click', event => {
@@ -71,4 +81,40 @@ if ($cart) {
         }
 
     })
+}
+
+//Slider
+
+
+const random = Math.floor(Math.random() * slides.length)
+slides[random].classList.add('active')
+
+for (const slide of slides) {
+    slide.addEventListener('click', () => {
+        clearActiveClasses()
+
+        slide.classList.add('active')
+    })
+}
+
+function clearActiveClasses() {
+    slides.forEach((slide) => {
+        slide.classList.remove('active')
+    })
+}
+
+//Login
+function hendleShowLogin(e) {
+    e.preventDefault();
+    login.style.display = "block"
+    regist.style.display = "none"
+    btnRegist.classList.remove("active");
+    btnLogin.classList.add("active");
+}
+
+function hendleShowRegist(e) {
+    login.style.display = "none"
+    regist.style.display = "block"
+    btnLogin.classList.remove("active");
+    btnRegist.classList.add("active");
 }

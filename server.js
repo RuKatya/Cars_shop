@@ -79,7 +79,7 @@ app.use('/cars', carsRoute);
 app.use('/addcar', addRoute);
 app.use('/cart', cartRoute);
 app.use('/orders', ordersRoute);
-app.use('/auth', authRoute);
+app.use('/login', authRoute);
 
 
 
