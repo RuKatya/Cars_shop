@@ -72,12 +72,14 @@ const carsRoute = require('./route/cars');
 const addRoute = require('./route/addcar');
 const cartRoute = require('./route/cart');
 const ordersRoute = require('./route/orders');
+const authRoute = require('./route/auth');
 
 app.use('/', indexRoute);
 app.use('/cars', carsRoute);
 app.use('/addcar', addRoute);
 app.use('/cart', cartRoute);
 app.use('/orders', ordersRoute);
+app.use('/auth', authRoute);
 
 
 

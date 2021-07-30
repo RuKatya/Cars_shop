@@ -9,27 +9,22 @@
             <h1>Add new Car</h1>
 
             <form action="/addcar" method="POST">
-                <div class="input-field">
-                    <input id="title" name="title" type="text" class="validate" required />
-                    <label for="title">Car name</label>
-                    <span class="helper-text" data-error="Enter car name"></span>
 
+                <div class="input-group mb-3">
+                    <input id="title" name="title" type="text" class="form-control" placeholder="Car name" required>
                 </div>
 
-                <div class="input-field">
-                    <input id="price" name="price" type="number" class="validate" required min="1" />
-                    <label for="title">Price of car</label>
-                    <span class="helper-text" data-error="Enter price"></span>
+                <div class="input-group mb-3">
+                    <input id="price" name="price" type="number" class="form-control"
+                        placeholder="Price of car in dollars" required min="1">
                 </div>
 
-                <div class="input-field">
-                    <input id="img" name="img" type="text" class="validate" required />
-                    <label for="img">URL picture of car</label>
-                    <span class="helper-text" data-error="enter the URL of the image"></span>
-
+                <div class="input-group mb-3">
+                    <input id="img" name="img" type="text" class="form-control" placeholder="URL picture of car"
+                        required>
                 </div>
 
-                <button class="btn btn-primary">Add Car</button>
+                <button class="btn btn-success">Add Car</button>
             </form>
         </div>
 

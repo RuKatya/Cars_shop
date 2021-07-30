@@ -5,7 +5,79 @@
 <body>
     <%- include('./components/navbar') %>
         <div class="container">
-            HI
+            <% if (orders.length) { %>
+                <% orders.forEach(order=> { %>
+                    <div class="card text-center">
+                        <div class="card-header">
+                            Order <%- order._id%>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <% order.cars.forEach(car=> {%>
+                                    <div>
+                                        <%- car.car.title %> x <strong>
+                                                <%- car.count%>
+                                            </strong>
+                                    </div>
+                                    <%})%>
+                            </h5>
+                            <p class="card-text"><em>
+                                    <%- order.user.userId.name %>
+                                </em>
+                                <%- order.user.userId.email %>
+                            </p>
+                            <p class="card-text">
+                                <%- order.date.toLocaleString()%>
+                            </p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Cost: <span class="price">
+                                <%- order.price%>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- <div class="row">
+                        <div class="col s6 offset-s3">
+                            <div class="card">
+                                <div class="card-content">
+                                    <span class="card-title">Order </%- order._id%></span>
+                                    <p class="date">
+                                        </%- order.date.toLocaleString()%>
+                                    </p>
+                                    <p><em>
+                                            </%- order.user.userId.name %>
+                                        </em>
+                                        </%- order.user.userId.email %>
+                                    </p>
+
+                                    <ol>
+                                        </% order.cars.forEach(car=> {%>
+                                            <div>
+                                                </%- car.car.title %> x <strong>
+                                                        </%- car.count%>
+                                                    </strong>
+                                            </div>
+                                            </%})%>
+                                    </ol>
+                                    <hr>
+                                    <p>Cost: <span class="price">
+                                            </%- order.price%>
+                                        </span></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br> -->
+
+                    <% }) %>
+                        <% } else { %>
+                            <div>No orders</div>
+                            <% } %>
+
+
 
         </div>
         <%- include('./components/footer'); %>

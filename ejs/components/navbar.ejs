@@ -1,27 +1,45 @@
-<nav>
-    <div class="nav-wrapper">
-        <a href="/" class="brand-logo">CARS</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Home</a>
+        <div class="navbar-nav">
 
-            <div>
-                <a href="/">HOME</a>
-            </div>
+            <!-- Cars page -->
+            <% console.log(title) %>
+                <% if (title=="Cars" ) { %>
+                    <a class="nav-link active" href="/cars">Cars</a>
+                    <% } else { %>
+                        <a class="nav-link" href="/cars">Cars</a>
+                        <% } %>
 
-            <div>
-                <a href="/cars">CARS</a>
-            </div>
+                            <!-- Add car -->
+                            <% if (title=="Add car" ) { %>
+                                <a class="nav-link active" href="/addcar">Add new car</a>
+                                <% } else { %>
+                                    <a class="nav-link" href="/addcar">Add new car</a>
+                                    <% } %>
 
-            <div>
-                <a href="/addcar">ADD CAR</a>
-            </div>
+                                        <!-- Cart -->
+                                        <% if (title=="Cart" ) { %>
+                                            <a class="nav-link active" href="/cart">Cart</a>
+                                            <% } else { %>
+                                                <a class="nav-link" href="/cart">Cart</a>
+                                                <% } %>
 
-            <div>
-                <a href="/cart">CART</a>
-            </div>
+                                                    <!-- Orders -->
+                                                    <% if (title=="Orders" ) { %>
+                                                        <a class="nav-link active" href="/orders">Orders</a>
+                                                        <% } else { %>
+                                                            <a class="nav-link" href="/orders">Orders</a>
+                                                            <% } %>
 
-            <div>
-                <a href="/orders">ORDERS</a>
-            </div>
-        </ul>
+                                                                <!-- Auth -->
+                                                                <% if (title=="Authorization" ) { %>
+                                                                    <a class="nav-link active"
+                                                                        href="/auth/login">Login</a>
+                                                                    <% } else { %>
+                                                                        <a class="nav-link" href="/auth/login">Login</a>
+                                                                        <% } %>
+
+        </div>
     </div>
 </nav>
