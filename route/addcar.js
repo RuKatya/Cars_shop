@@ -3,7 +3,7 @@ const Cars = require('../models/cars')
 const router = Router();
 
 router.get('/', (req, res) => {
-    res.render('add', {
+    res.render('cars/add', {
         title: "Add car",
         isAdd: true
     })
@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
 
     try {
         await car.save();
-        res.redirect('/cars') //sending user after button send to course page
+        res.redirect('/cars/cars') //sending user after button send to course page
 
     } catch (err) {
         console.log(color.bgRed.white(err))

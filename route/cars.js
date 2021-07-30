@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
 
     console.log(cars)
 
-    res.render('cars', {
+    res.render('cars/cars', {
         title: "Cars",
         isCourses: true,
         cars
@@ -23,7 +23,7 @@ router.get('/:id/edit', async (req, res) => {
 
     const car = await Cars.findById(req.params.id)//getById(req.params.id)
 
-    res.render('car-edit', {
+    res.render('cars/car-edit', {
         title: `Edit ${car.title}`,
         car
     })
@@ -33,7 +33,7 @@ router.post('/edit', async (req, res) => {
     const { id } = req.body
     delete req.body.id
     await Cars.findByIdAndUpdate(id, req.body) //id of car & where update
-    res.redirect('/cars')
+    res.redirect('/cars/cars')
 })
 
 router.post('/remove', async (req, res) => {
@@ -49,7 +49,7 @@ router.post('/remove', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     const car = await Cars.findById(req.params.id)
-    res.render('car', {
+    res.render('cars/car', {
         layout: 'empty',
         title: `Car ${car.title}`,
         car
