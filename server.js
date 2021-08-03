@@ -12,11 +12,18 @@ const PORT = process.env.PORT ?? 5000; //connect to port 5000
 const mongoose = require('mongoose')
 //USER
 const Users = require('./models/user')
-
+//SESSION
+const session = require('express-session')
 
 const app = express(); //express
 app.use(bodyParser.urlencoded({ extended: false })) //bodyParser
 app.use(express.static(path.resolve(__dirname, 'public'))) //static
+
+app.use(session({
+    secret: 'some secret value',
+    resave: false,
+    saveUninitialized: false
+}))
 
 //EJS
 app.set('view engine', 'ejs') //connecting ejs
