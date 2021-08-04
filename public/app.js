@@ -6,8 +6,6 @@ const toCurrency = price => {
     }).format(price)
 }
 
-
-
 //Date
 const toDate = date => {
     return new Intl.DateTimeFormat('en-EN', { //for locales also can write: "he-HE-u-ca-hebrew" or "en-EN-u-nu-lath"

@@ -8,7 +8,14 @@
 <body>
     <%- include('../components/navbar'); %>
         <div class="container">
-            <%- car.title %>
+            <div> Name of car <%- car.title %></div>
+            <div>Price: <%- car.price %></div>
+            <div>
+                About the car: <%- car.description %>
+            </div>
+            <div>productionModel <%- car.productionModel %></div>
+            <div>yearsModel <%- car.yearsModel %></div>
+            
                 <% console.log(car)%>
 
         </div>

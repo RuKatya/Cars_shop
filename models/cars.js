@@ -14,9 +14,9 @@ const CarsSell = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Users"
     },
-    // description: String,
-    // yearsModel: String,
-    // productionModel: String
+    description: String,
+    yearsModel: String,
+    productionModel: String
 })
 
 CarsSell.method('toClient', function () {
