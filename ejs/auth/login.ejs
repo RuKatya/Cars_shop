@@ -23,49 +23,43 @@
             <div id="login">
                 <h2>Get in to store </h2>
                 <div>
-                    <div class="mb-3">
-                        <input type="email" id="email" name="email" class="form-control" required
+                    <form action="" method="POST">
+                        <input type="email" id="email" name="email" class="form-control mb-3" required
                             placeholder="Enter Email address">
                         <span data-error-message="Enter Email address"></span>
-                    </div>
 
-                    <div class="mb-3">
-                        <input type="password" id="password" name="password" class="form-control" required
+                        <input type="password" id="password" name="password" class="form-control mb-3" required
                             placeholder="Enter password">
-                    </div>
 
-                    <button class="btn btn-success" type="submit">Get in</button>
+                        <button class="btn btn-success" type="submit">Get in</button>
                 </div>
+                </form>
             </div>
 
             <!-- Registration -->
             <div id="register" style="display: none;">
                 <h2>Create new account</h2>
                 <div>
-                    <div class="mb-3">
-                        <input type="email" id="email" name="email" class="form-control" required
+                    <form action="" method="POST">
+                        <input type="email" id="email" name="email" class="form-control mb-3" required
                             placeholder="Enter Email address">
-                    </div>
 
-                    <div class="input-group">
-                        <span class="input-group-text">Full name</span>
-                        <input type="text" class="form-control" placeholder="First name" required>
-                        <input type="text" a class="form-control" placeholder="Last name" required>
-                    </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Full name</span>
+                            <input type="text" class="form-control" placeholder="First name" required>
+                            <input type="text" a class="form-control" placeholder="Last name" required>
+                        </div>
 
-                    <div class="mb-3">
-                        <input type="password" id="repassword" name="password" class="form-control" required
+                        <input type="password" id="repassword" name="password" class="form-control mb-3" required
                             placeholder="Enter password">
-                    </div>
 
-                    <div class="mb-3">
-                        <input type="password" id="confirm" name="confirm" class="form-control" required
-                            placeholder="Enter password again">
-                    </div>
+                        <input type="password" id="confirm" name="confirm" class="form-control mb-3" required
+                            placeholder="Confirm password">
 
-                    <button class="btn btn-success" type="submit">Registration</button>
-
+                        <button class="btn btn-success" type="submit">Registration</button>
+                    </form>
                 </div>
+
             </div>
 
         </div>
