@@ -40,17 +40,17 @@
             <div id="register" style="display: none;">
                 <h2>Create new account</h2>
                 <div>
-                    <form action="/auth/registration" method="POST">
+                    <form action="/auth/register" method="POST">
                         <input type="email" id="email" name="email" class="form-control mb-3" required
                             placeholder="Enter Email address">
 
                         <div class="input-group mb-3">
                             <span class="input-group-text">Full name</span>
-                            <input type="text" class="form-control" placeholder="First name" required>
-                            <input type="text" a class="form-control" placeholder="Last name" required>
+                            <input type="text" id="name" name="name" class="form-control"
+                                placeholder="Enter first and last name" required>
                         </div>
 
-                        <input type="password" id="repassword" name="password" class="form-control mb-3" required
+                        <input type="password" id="password" name="password" class="form-control mb-3" required
                             placeholder="Enter password">
 
                         <input type="password" id="confirm" name="confirm" class="form-control mb-3" required

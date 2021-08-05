@@ -116,3 +116,4 @@ function hendleShowRegist(e) {
     btnLogin.classList.remove("active");
     btnRegist.classList.add("active");
 }
+

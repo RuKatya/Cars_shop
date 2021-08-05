@@ -3,12 +3,13 @@
 
 <head>
     <%- include('../components/head'); %>
+        <!-- <link rel="stylesheet" href="style/cars/cars.css"> -->
 </head>
 
 <body>
     <%- include('../components/navbar') %>
         <div class="container">
-            <div class="windowByed">OKNO</div>
+            <div class="windowByed">The car has been added to the cart</div>
             <% if (cars.length) { %>
                 <div class="row row-cols-3 gap-0">
                     <% cars.forEach(function(car){ %>
@@ -29,7 +30,8 @@
                                                 class="btn btn-primary">Edit</a>
                                             <form action="/cart/add" method="POST">
                                                 <input type="hidden" name="id" value="<%- car.id %>">
-                                                <button type="submit" class="btn btn-success">Buy</button>
+                                                <button type="submit" class="btn btn-success"
+                                                    onclick="hendleShowBuy()">Buy</button>
                                             </form>
                                             <% } %>
                                     </div>
@@ -43,5 +45,7 @@
                 </div>
 
         </div>
+        <script src="jquery-3.6.0.min.js"></script>
+        <script src="jQuery.js"></script>
         <%- include('../components/footer'); %>
 </body>

@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const Users = require('../models/user')
-const router = Router()
+
 
 router.get('/login', async (req, res) => {
     res.render('auth/login', {
@@ -20,26 +20,54 @@ router.get('/logout', async (req, res) => {
 })
 
 router.post('/login', async (req, res) => {
-    const user = await Users.findById('60fde6f04306ab2288739bb0')
-    req.session.user = user
+    try {
+        const { email, password } = req.body
 
-    // app.use(async (req, res, next) => {
-    //     try {
-    //         req.user = user
-    //         next()
-    //     } catch (err) {
-    //         console.log(color.bgRed.white(err))
-    //     }
-    // })
+        const candidate = await Users.findOne({ email })
+        if (candidate) {
+            const areSame = password === candidate.password
 
-    req.session.save(err => {
-        if (err) {
-            throw err
+            req.session.user = candidate
+            req.session.isAuthenticates = true
+
+            req.session.save(err => {
+                if (err) {
+                    throw err
+                }
+                res.redirect('/')
+            })
+
+            if (areSame) {
+
+            } else {
+                res.redirect('/auth/login')
+            }
+        } else {
+            res.redirect('/auth/login')
         }
-        res.redirect('/')
-    })
-    req.session.isAuthenticates = true
+    } catch (err) {
+        console.log(color.bgRed.black(err))
+    }
 
+})
+
+router.post('/register', async (req, res) => {
+    try {
+        const { email, password, repeat, name } = req.body
+        const candidate = await User.findOne({ email })
+
+        if (candidate) {
+            res.redirect('/auth/login')
+        } else {
+            const user = new User({
+                email, name, password, cart: { items: [] }
+            })
+            await user.save()
+            res.redirect('/auth/login')
+        }
+    } catch (err) {
+        console.log(color.bgRed.black(err))
+    }
 })
 
 module.exports = router;
