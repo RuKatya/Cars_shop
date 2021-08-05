@@ -23,23 +23,21 @@ router.get('/logout', async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body
-
         const candidate = await Users.findOne({ email })
+
         if (candidate) {
             const areSame = password === candidate.password
 
-            req.session.user = candidate
-            req.session.isAuthenticates = true
-
-            req.session.save(err => {
-                if (err) {
-                    throw err
-                }
-                res.redirect('/')
-            })
-
             if (areSame) {
+                req.session.user = candidate
+                req.session.isAuthenticates = true
 
+                req.session.save(err => {
+                    if (err) {
+                        throw err
+                    }
+                    res.redirect('/')
+                })
             } else {
                 res.redirect('/auth/login')
             }
