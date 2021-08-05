@@ -2,7 +2,6 @@ const { Router } = require('express')
 const Users = require('../models/user')
 const router = Router();
 
-
 router.get('/login', async (req, res) => {
     res.render('auth/login', {
         title: 'Authorization',
