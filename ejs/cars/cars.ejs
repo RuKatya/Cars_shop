@@ -8,6 +8,7 @@
 <body>
     <%- include('../components/navbar') %>
         <div class="container">
+            <div class="windowByed">OKNO</div>
             <% if (cars.length) { %>
                 <div class="row row-cols-3 gap-0">
                     <% cars.forEach(function(car){ %>
@@ -23,11 +24,14 @@
                                     </h5>
                                     <div class="btnsCars">
                                         <a href="/cars/<%-car.id.toString()%>" class="btn btn-primary">Show car</a>
-                                        <a href="/cars/<%- car.id %>/edit?allow=true" class="btn btn-primary">Edit</a>
-                                        <form action="/cart/add" method="POST">
-                                            <input type="hidden" name="id" value="<%- car.id %>">
-                                            <button type="submit" class="btn btn-success">Buy</button>
-                                        </form>
+                                        <% if (isAuth) { %>
+                                            <a href="/cars/<%- car.id %>/edit?allow=true"
+                                                class="btn btn-primary">Edit</a>
+                                            <form action="/cart/add" method="POST">
+                                                <input type="hidden" name="id" value="<%- car.id %>">
+                                                <button type="submit" class="btn btn-success">Buy</button>
+                                            </form>
+                                            <% } %>
                                     </div>
                                 </div>
                             </div>
@@ -36,10 +40,8 @@
                             <% } else { %>
                                 <div>No cars here!</div>
                                 <% } %>
-
-
-
                 </div>
+
         </div>
         <%- include('../components/footer'); %>
 </body>

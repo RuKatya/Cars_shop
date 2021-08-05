@@ -82,4 +82,10 @@ body,
 html {
   background-color: black;
 }
+
+.windowByed {
+  color: brown;
+  border: 1px solid black;
+  border-radius: 0.2rem;
+}
 /*# sourceMappingURL=style.css.map */
