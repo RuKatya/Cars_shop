@@ -1,6 +1,8 @@
 const { Router } = require('express')
 const Users = require('../models/user')
 const router = Router();
+const color = require('colors')
+
 
 router.get('/login', async (req, res) => {
     res.render('auth/login', {
@@ -52,12 +54,12 @@ router.post('/login', async (req, res) => {
 router.post('/register', async (req, res) => {
     try {
         const { email, password, repeat, name } = req.body
-        const candidate = await User.findOne({ email })
+        const candidate = await Users.findOne({ email })
 
         if (candidate) {
             res.redirect('/auth/login')
         } else {
-            const user = new User({
+            const user = new Users({
                 email, name, password, cart: { items: [] }
             })
             await user.save()

@@ -2,6 +2,7 @@ const { Router } = require('express')
 const Cars = require('../models/cars')
 const auth = require('../middleware/auth')
 const router = Router();
+const color = require('colors')
 
 router.get('/', auth, (req, res) => {
     res.render('cars/add', {
