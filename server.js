@@ -4,6 +4,8 @@ const express = require('express');
 var bodyParser = require('body-parser')
 //PATH
 const path = require('path')
+//CSURF
+const csrf = require('csurf')
 //COLORS
 const color = require('colors')
 //PORT
@@ -40,8 +42,10 @@ app.use(session({ //session
 }))
 
 //Middleware
+app.use(csrf())
 app.use(varMiddleware)
 app.use(userMiddleware)
+
 
 //EJS
 app.set('view engine', 'ejs') //connecting ejs

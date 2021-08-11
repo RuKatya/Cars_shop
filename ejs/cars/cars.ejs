@@ -29,6 +29,7 @@
                                             <a href="/cars/<%- car.id %>/edit?allow=true"
                                                 class="btn btn-primary">Edit</a>
                                             <form action="/cart/add" method="POST">
+                                                <input type="hidden" name="_csrf" value="<%-csrf%>">
                                                 <input type="hidden" name="id" value="<%- car.id %>">
                                                 <button type="submit" class="btn btn-success"
                                                     onclick="hendleShowBuy()">Buy</button>

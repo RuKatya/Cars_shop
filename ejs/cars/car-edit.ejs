@@ -27,10 +27,13 @@
 
                 <input type="hidden" name="id" value="<%- car.id %>">
 
+                <input type="hidden" name="_csrf" value="<%-csrf%>">
+
                 <button type="submit" class="btn btn-primary">Edit Car</button>
             </form>
 
             <form action="/cars/remove" method="POST">
+                <input type="hidden" name="_csrf" value="<%-csrf%>">
                 <input type="hidden" name="id" value="<%- car.id %>">
                 <button type="button" class="btn btn-danger">Delete car</button>
             </form>

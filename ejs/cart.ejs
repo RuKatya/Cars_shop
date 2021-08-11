@@ -73,6 +73,7 @@
                 </ul>
 
                 <form action="/orders" method="POST">
+                    <input type="hidden" name="_csrf" value="<%-csrf%>">
                     <button type="submit" class="btn btn-primary">Order all</button>
                 </form>
 
