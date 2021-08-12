@@ -2,7 +2,7 @@ const keys = require('../keys')
 module.exports = function (mail) {
     return {
         to: mail,
-        from: 'nodeshopkatya@gmail.com',
+        from: keys.EMAIL_FROM,
         subject: 'Account created',
         html: `
         <h1>Welcome to our shop</h1>
