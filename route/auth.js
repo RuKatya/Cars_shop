@@ -4,11 +4,22 @@ const Users = require('../models/user')
 const router = Router();
 const color = require('colors')
 
+const keys = require('../keys')
+//nodemailer
+const nodemailer = require('nodemailer')
+const sendgrid = require('nodemailer-sendgrid-transport')
+const regEmail = require('../emails/registration')
+
+const tranporter = nodemailer.createTransport(sendgrid({
+    auth: { api_key: keys.SENDGRIP_API_KEY }
+}))
 
 router.get('/login', async (req, res) => {
     res.render('auth/login', {
         title: 'Authorization',
-        isLogin: true
+        isLogin: true,
+        registError: req.flash('registError'),
+        loginError: req.flash('loginError')
     })
 })
 
@@ -41,9 +52,11 @@ router.post('/login', async (req, res) => {
                     res.redirect('/')
                 })
             } else {
+                req.flash('loginError', 'Wrong password')
                 res.redirect('/auth/login')
             }
         } else {
+            req.flash('loginError', 'User not exist')
             res.redirect('/auth/login')
         }
     } catch (err) {
@@ -58,6 +71,7 @@ router.post('/register', async (req, res) => {
         const candidate = await Users.findOne({ email })
 
         if (candidate) {
+            req.flash('registError', 'User exist')
             res.redirect('/auth/login')
         } else {
             const hashpassword = await bcrypt.hash(password, 10)
@@ -65,7 +79,9 @@ router.post('/register', async (req, res) => {
                 email, name, password: hashpassword, cart: { items: [] }
             })
             await user.save()
+            await tranporter.sendMail(regEmail(email))
             res.redirect('/auth/login')
+
         }
     } catch (err) {
         console.log(color.bgRed.black(err))

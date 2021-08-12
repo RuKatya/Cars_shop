@@ -16,6 +16,7 @@
     "bootstrap": "^5.0.2",
     "bootstrap-icons": "^1.5.0",
     "colors": "^1.4.0",
+    "connect-flash": "^0.1.1",
     "connect-mongodb-session": "^3.0.0",
     "csurf": "^1.11.0",
     "ejs": "^3.1.6",
@@ -23,6 +24,8 @@
     "express-session": "^1.17.2",
     "jquery": "^3.6.0",
     "mongoose": "^5.13.3",
+    "nodemailer": "^6.6.3",
+    "nodemailer-sendgrid-transport": "^0.2.0",
     "path": "^0.12.7",
     "sass": "^1.36.0",
     "scss": "^0.2.4"
