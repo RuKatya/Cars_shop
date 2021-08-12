@@ -114,8 +114,7 @@ router.post('/reset', (req, res) => {
 
             if (candidate) {
                 candidate.resetToken = token
-                candidate.resetTokenExp = Date.now() + 3600
-                console.log(candidate.resetTokenExp)
+                candidate.resetTokenExp = Date.now() + 60 * 60 * 1000
                 await candidate.save()
                 await tranporter.sendMail(resetEmail(candidate.email, token))
                 res.redirect('/auth/login')
@@ -157,12 +156,14 @@ router.get('/password/:token', async (req, res) => {
 })
 
 router.post('/password', async (req, res) => {
+
     try {
         const user = await Users.findOne({
             _id: req.body.userId,
             resetToken: req.body.token,
             resetTokenExp: { $gt: Date.now() }
         })
+        console.log(user)
 
         if (user) {
             user.password = await bcrypt.hash(req.body.password, 10)

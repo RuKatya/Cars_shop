@@ -55,7 +55,7 @@
                         <h2>Create new account</h2>
                         <div>
                             <form action="/auth/register" method="POST">
-                                <input type="email" id="email" name="email" class="form-control mb-3" required
+                                <input type="remail" id="email" name="email" class="form-control mb-3" required
                                     placeholder="Enter Email address">
 
                                 <div class="input-group mb-3">
@@ -64,10 +64,10 @@
                                         placeholder="Enter first and last name" required>
                                 </div>
 
-                                <input type="password" id="password" name="password" class="form-control mb-3" required
-                                    placeholder="Enter password">
+                                <input type="repassword" id="password" name="password" class="form-control mb-3"
+                                    required placeholder="Enter password">
 
-                                <input type="password" id="confirm" name="confirm" class="form-control mb-3" required
+                                <input type="confirm" id="confirm" name="confirm" class="form-control mb-3" required
                                     placeholder="Confirm password">
 
                                 <input type="hidden" name="_csrf" value="<%-csrf%>">
