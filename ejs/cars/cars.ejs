@@ -26,15 +26,19 @@
                                     <div class="btnsCars">
                                         <a href="/cars/<%-car.id.toString()%>" class="btn btn-primary">Show car</a>
                                         <% if (isAuth) { %>
-                                            <a href="/cars/<%- car.id %>/edit?allow=true"
-                                                class="btn btn-primary">Edit</a>
-                                            <form action="/cart/add" method="POST">
-                                                <input type="hidden" name="_csrf" value="<%-csrf%>">
-                                                <input type="hidden" name="id" value="<%- car.id %>">
-                                                <button type="submit" class="btn btn-success"
-                                                    onclick="hendleShowBuy()">Buy</button>
-                                            </form>
-                                            <% } %>
+                                            <% if (userId._id===userId) { %>
+                                                <a href="/cars/<%- car.id %>/edit?allow=true"
+                                                    class="btn btn-primary">Edit</a>
+                                                <% } %>
+
+
+                                                    <form action="/cart/add" method="POST">
+                                                        <input type="hidden" name="_csrf" value="<%-csrf%>">
+                                                        <input type="hidden" name="id" value="<%- car.id %>">
+                                                        <button type="submit" class="btn btn-success"
+                                                            onclick="hendleShowBuy()">Buy</button>
+                                                    </form>
+                                                    <% } %>
                                     </div>
                                 </div>
                             </div>
