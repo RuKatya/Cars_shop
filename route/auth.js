@@ -16,6 +16,9 @@ const resetEmail = require('../emails/reset')
 //crypto
 const crypto = require('crypto')
 
+//validator
+const {body, validationResult} = require('express-validator/check')
+
 const tranporter = nodemailer.createTransport(sendgrid({
     auth: { api_key: keys.SENDGRIP_API_KEY }
 }))
@@ -71,10 +74,16 @@ router.post('/login', async (req, res) => {
 
 })
 
-router.post('/register', async (req, res) => {
+router.post('/register', body('email').isEmail(), async (req, res) => {
     try {
-        const { email, password, repeat, name } = req.body
+        const { email, password, confirm, name } = req.body
         const candidate = await Users.findOne({ email })
+
+        const errors = validationResult(req)
+        if(!errors.isEmpty()) {
+            req.flash('registError', errors.array()[0].msg)
+            return res.status(422).redirect('/auth/login')
+        }
 
         if (candidate) {
             req.flash('registError', 'User exist')
